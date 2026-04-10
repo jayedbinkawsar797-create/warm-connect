@@ -19,6 +19,7 @@ const navLinks = [
   { label: "Experience", href: "/experience" },
   { label: "Customize", href: "/customize" },
   { label: "Warranty", href: "/warranty" },
+  { label: "Dealer", href: "/dealer" },
   { label: "Book a Demo", href: "/book-demo" },
   { label: "Contact", href: "/contact" },
 ];

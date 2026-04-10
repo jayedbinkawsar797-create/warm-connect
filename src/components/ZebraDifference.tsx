@@ -25,7 +25,7 @@ const pillars = [
 
 const ZebraDifference = () => {
   return (
-    <section className="relative py-32 section-charcoal grain-overlay overflow-hidden">
+    <section className="relative py-20 section-charcoal grain-overlay overflow-hidden">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="absolute bottom-0 left-0 right-0 section-divider" />
 
