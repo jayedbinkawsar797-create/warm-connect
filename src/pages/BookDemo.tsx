@@ -4,7 +4,6 @@ import { CalendarIcon, MapPin, Send, Check, Clock, Car } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -69,8 +68,6 @@ const BookDemo = () => {
     setSubmitted(true);
   };
 
-  const inputClasses = "w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm";
-
   if (submitted) {
     return (
       <div className="min-h-screen bg-background">
@@ -110,7 +107,7 @@ const BookDemo = () => {
               Book a <span className="text-gradient-red">Test Drive</span>
             </h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Feel the luxury, performance, and innovation of a Zebra Golf Cart firsthand. Pick a date and time that works for you.
+              Feel the luxury, performance, and innovation of a Zebra Golf Cart firsthand.
             </p>
           </motion.div>
         </div>
@@ -119,10 +116,9 @@ const BookDemo = () => {
       <section className="pb-20">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-5 gap-10">
-            {/* Calendar + Time - Left */}
+            {/* Calendar + Time */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="lg:col-span-2 space-y-6">
-              {/* Location */}
-              <div className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+              <div className="rounded-3xl border border-border/30 bg-section-elevated p-7">
                 <h3 className="font-display font-bold text-sm uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-primary" /> Select Location
                 </h3>
@@ -130,7 +126,7 @@ const BookDemo = () => {
                   {["florida", "arizona"].map((loc) => (
                     <button key={loc} type="button" onClick={() => updateField("location", loc)}
                       className={`py-3 rounded-xl text-sm font-bold transition-all duration-300 border ${
-                        form.location === loc ? "bg-primary/10 border-primary/40 text-foreground" : "bg-card/30 border-border/20 text-muted-foreground hover:border-border/50"
+                        form.location === loc ? "bg-primary/10 border-primary/40 text-foreground" : "bg-section-dark border-border/20 text-muted-foreground hover:border-border/50"
                       }`}>
                       {loc === "florida" ? "Florida" : "Arizona"}
                     </button>
@@ -138,8 +134,7 @@ const BookDemo = () => {
                 </div>
               </div>
 
-              {/* Calendar */}
-              <div className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+              <div className="rounded-3xl border border-border/30 bg-section-elevated p-7">
                 <h3 className="font-display font-bold text-sm uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
                   <CalendarIcon className="w-4 h-4 text-primary" /> Select Date
                 </h3>
@@ -148,13 +143,12 @@ const BookDemo = () => {
                   selected={form.date}
                   onSelect={(date) => updateField("date", date)}
                   disabled={(date) => date < new Date() || date.getDay() === 0}
-                  className={cn("p-3 pointer-events-auto rounded-xl border border-border/20 bg-card/20")}
+                  className={cn("p-3 pointer-events-auto rounded-xl border border-border/20 bg-section-dark")}
                 />
                 {errors.date && <p className="text-xs text-primary mt-2">{errors.date}</p>}
               </div>
 
-              {/* Time slots */}
-              <div className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+              <div className="rounded-3xl border border-border/30 bg-section-elevated p-7">
                 <h3 className="font-display font-bold text-sm uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-primary" /> Select Time
                 </h3>
@@ -162,7 +156,7 @@ const BookDemo = () => {
                   {timeSlots.map((slot) => (
                     <button key={slot} type="button" onClick={() => updateField("timeSlot", slot)}
                       className={`py-2.5 rounded-xl text-xs font-bold transition-all duration-300 border ${
-                        form.timeSlot === slot ? "bg-primary/10 border-primary/40 text-foreground" : "bg-card/30 border-border/20 text-muted-foreground hover:border-border/50"
+                        form.timeSlot === slot ? "bg-primary/10 border-primary/40 text-foreground" : "bg-section-dark border-border/20 text-muted-foreground hover:border-border/50"
                       }`}>
                       {slot}
                     </button>
@@ -172,13 +166,12 @@ const BookDemo = () => {
               </div>
             </motion.div>
 
-            {/* Contact form - Right */}
+            {/* Form */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="lg:col-span-3">
-              <div className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-8 lg:sticky lg:top-28">
+              <div className="rounded-3xl border border-border/30 bg-section-elevated p-8 lg:sticky lg:top-28">
                 <h2 className="font-display font-black text-2xl text-foreground mb-2">Your Details</h2>
                 <p className="text-sm text-muted-foreground mb-6">We'll confirm your booking via email.</p>
 
-                {/* Summary strip */}
                 {form.date && form.timeSlot && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="mb-6 p-4 rounded-2xl border border-primary/20 bg-primary/5">
                     <p className="text-sm text-foreground font-bold">
@@ -191,28 +184,28 @@ const BookDemo = () => {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">First Name *</label>
-                      <input type="text" value={form.firstName} onChange={(e) => updateField("firstName", e.target.value)} className={inputClasses} placeholder="John" />
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">First Name *</label>
+                      <input type="text" value={form.firstName} onChange={(e) => updateField("firstName", e.target.value)} className="form-input" placeholder="John" />
                       {errors.firstName && <p className="text-xs text-primary mt-1">{errors.firstName}</p>}
                     </div>
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Last Name *</label>
-                      <input type="text" value={form.lastName} onChange={(e) => updateField("lastName", e.target.value)} className={inputClasses} placeholder="Doe" />
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Last Name *</label>
+                      <input type="text" value={form.lastName} onChange={(e) => updateField("lastName", e.target.value)} className="form-input" placeholder="Doe" />
                       {errors.lastName && <p className="text-xs text-primary mt-1">{errors.lastName}</p>}
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Email *</label>
-                      <input type="email" value={form.email} onChange={(e) => updateField("email", e.target.value)} className={inputClasses} placeholder="john@example.com" />
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Email *</label>
+                      <input type="email" value={form.email} onChange={(e) => updateField("email", e.target.value)} className="form-input" placeholder="john@example.com" />
                       {errors.email && <p className="text-xs text-primary mt-1">{errors.email}</p>}
                     </div>
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Phone *</label>
-                      <input type="tel" value={form.phone} onChange={(e) => updateField("phone", e.target.value)} className={inputClasses} placeholder="(555) 123-4567" />
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Phone *</label>
+                      <input type="tel" value={form.phone} onChange={(e) => updateField("phone", e.target.value)} className="form-input" placeholder="(555) 123-4567" />
                       {errors.phone && <p className="text-xs text-primary mt-1">{errors.phone}</p>}
                     </div>
                   </div>
@@ -225,16 +218,16 @@ const BookDemo = () => {
                       {models.map((m) => (
                         <button key={m.id} type="button" onClick={() => updateField("model", m.id)}
                           className={`py-3 px-4 rounded-xl text-xs font-bold transition-all duration-300 border ${
-                            form.model === m.id ? "bg-primary/10 border-primary/40 text-foreground" : "bg-card/30 border-border/20 text-muted-foreground hover:border-border/50"
+                            form.model === m.id ? "bg-primary/10 border-primary/40 text-foreground" : "bg-section-dark border-border/20 text-muted-foreground hover:border-border/50"
                           }`}>{m.label}</button>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Notes (Optional)</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Notes (Optional)</label>
                     <textarea value={form.message} onChange={(e) => updateField("message", e.target.value)} rows={3}
-                      className={`${inputClasses} resize-none`} placeholder="Any special requests..." />
+                      className="form-input resize-none" placeholder="Any special requests..." />
                   </div>
 
                   <button type="submit" className="group w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300">
