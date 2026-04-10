@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index.tsx";
 import Models from "./pages/Models.tsx";
 import Experience from "./pages/Experience.tsx";
 import Warranty from "./pages/Warranty.tsx";
 import Quote from "./pages/Quote.tsx";
 import Contact from "./pages/Contact.tsx";
-import DealerApplication from "./pages/DealerApplication.tsx";
+import Dealer from "./pages/Dealer.tsx";
 import BookDemo from "./pages/BookDemo.tsx";
 import CustomizePage from "./pages/Customize.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -22,6 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/models" element={<Models />} />
@@ -30,7 +32,7 @@ const App = () => (
           <Route path="/customize" element={<CustomizePage />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/dealer" element={<DealerApplication />} />
+          <Route path="/dealer" element={<Dealer />} />
           <Route path="/book-demo" element={<BookDemo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
