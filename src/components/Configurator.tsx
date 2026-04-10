@@ -7,12 +7,14 @@ import cartBlack from "@/assets/cart-black.png";
 import cartBurgundy from "@/assets/cart-burgundy.png";
 import cartBlue from "@/assets/cart-blue.png";
 import cartWhite from "@/assets/cart-white.webp";
+import cartGrey from "@/assets/cart-grey.webp";
 
 const colors = [
   { id: "black", label: "Onyx Black", hex: "#1a1a1a", image: cartBlack },
   { id: "burgundy", label: "Royal Burgundy", hex: "#6b1a2a", image: cartBurgundy },
   { id: "blue", label: "Sapphire Blue", hex: "#1a3a8a", image: cartBlue },
   { id: "white", label: "Pearl White", hex: "#e8e8e8", image: cartWhite },
+  { id: "grey", label: "Gunmetal Grey", hex: "#6a6a6a", image: cartGrey },
 ];
 
 const seatOptions = [
@@ -87,7 +89,6 @@ const Configurator = () => {
       rim: selectedRim,
       accessories: selectedAccessories,
     };
-    // Store in sessionStorage for the quote page
     sessionStorage.setItem("zebra-config", JSON.stringify(config));
     navigate("/quote");
   };
@@ -370,7 +371,7 @@ const Configurator = () => {
                         >
                           <span className="text-sm font-bold text-foreground">{acc.label}</span>
                           <div className="flex items-center gap-3">
-                            <span className="text-xs text-muted-foreground">{acc.price}</span>
+                            <span className="text-xs text-muted-foreground font-semibold">{acc.price}</span>
                             {selectedAccessories.includes(acc.id) && (
                               <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
                                 <Check className="w-3 h-3 text-primary-foreground" />
@@ -385,21 +386,13 @@ const Configurator = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Continue CTA */}
-            <div className="pt-4 space-y-3">
-              <button
-                onClick={handleContinue}
-                className="group block w-full text-center py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300"
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Continue to Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </button>
-              <p className="text-center text-[11px] text-muted-foreground">
-                Review your build & get a personalized quote
-              </p>
-            </div>
+            {/* Continue Button */}
+            <button
+              onClick={handleContinue}
+              className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300"
+            >
+              Get Your Quote <ArrowRight className="w-4 h-4" />
+            </button>
           </motion.div>
         </div>
       </div>

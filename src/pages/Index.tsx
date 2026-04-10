@@ -1,11 +1,14 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import YouCanFeelIt from "@/components/YouCanFeelIt";
 import ZebraDifference from "@/components/ZebraDifference";
 import StatsCounter from "@/components/StatsCounter";
+import ColorShowcase from "@/components/ColorShowcase";
 import ModelsShowcase from "@/components/ModelsShowcase";
 import ParallaxImageDivider from "@/components/ParallaxImageDivider";
 import Configurator from "@/components/Configurator";
 import FeaturesGrid from "@/components/FeaturesGrid";
+import LifestyleSection from "@/components/LifestyleSection";
 import GalleryStrip from "@/components/GalleryStrip";
 import SpecsSection from "@/components/SpecsSection";
 import FinancingSection from "@/components/FinancingSection";
@@ -16,15 +19,17 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import StickyReservationBar from "@/components/StickyReservationBar";
 import cartWhite from "@/assets/cart-white.webp";
-import cartBlue from "@/assets/cart-blue.png";
+import cartFrontBlue from "@/assets/cart-front-blue.jpg";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
+      <YouCanFeelIt />
       <ZebraDifference />
       <StatsCounter />
+      <ColorShowcase />
       <ModelsShowcase />
       <ParallaxImageDivider
         image={cartWhite}
@@ -34,9 +39,10 @@ const Index = () => {
       />
       <Configurator />
       <FeaturesGrid />
+      <LifestyleSection />
       <GalleryStrip />
       <ParallaxImageDivider
-        image={cartBlue}
+        image={cartFrontBlue}
         overlay="red"
       />
       <SpecsSection />

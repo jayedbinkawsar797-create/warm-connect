@@ -3,21 +3,25 @@ import z1 from "@/assets/z1.webp";
 import zm1 from "@/assets/zm1.webp";
 import zw1 from "@/assets/zw1.webp";
 import zdash1 from "@/assets/zdash1.webp";
-import cartBlack from "@/assets/cart-black.png";
-import cartBlue from "@/assets/cart-blue.png";
+import cartFrontBlack from "@/assets/cart-front-black.png";
+import cartFrontBlue from "@/assets/cart-front-blue.jpg";
+import cartRearBlack from "@/assets/cart-rear-black.png";
+import cartFrontGrey from "@/assets/cart-front-grey.png";
 
 const images = [
-  { src: z1, alt: "Zebra Golf Cart Front View", span: "col-span-2 row-span-2" },
-  { src: zdash1, alt: "Zebra Cart Dashboard", span: "col-span-1 row-span-1" },
-  { src: zm1, alt: "Zebra Cart Interior Detail", span: "col-span-1 row-span-1" },
-  { src: zw1, alt: "Zebra Cart Wheel Detail", span: "col-span-1 row-span-1" },
-  { src: cartBlack, alt: "Zebra Cart Black Edition", span: "col-span-1 row-span-1" },
-  { src: cartBlue, alt: "Zebra Cart Ocean Blue", span: "col-span-2 row-span-1" },
+  { src: cartFrontBlack, alt: "Zebra Cart — Onyx Black Front", span: "col-span-2 row-span-2" },
+  { src: zdash1, alt: "Carbon Fiber Dashboard", span: "col-span-1 row-span-1" },
+  { src: zm1, alt: "Diamond-Stitched Interior", span: "col-span-1 row-span-1" },
+  { src: zw1, alt: "Premium Alloy Wheels", span: "col-span-1 row-span-1" },
+  { src: cartRearBlack, alt: "Rear View — LED Taillights", span: "col-span-1 row-span-1" },
+  { src: cartFrontBlue, alt: "Sapphire Blue Edition", span: "col-span-1 row-span-1" },
+  { src: z1, alt: "Zebra Cart Side Profile", span: "col-span-1 row-span-1" },
+  { src: cartFrontGrey, alt: "Gunmetal Grey — Front View", span: "col-span-2 row-span-1" },
 ];
 
 const GalleryStrip = () => {
   return (
-    <section className="py-28 overflow-hidden section-elevated">
+    <section className="py-28 overflow-hidden section-elevated relative">
       <div className="absolute top-0 left-0 right-0 section-divider" />
       <div className="container mx-auto px-6 mb-12">
         <motion.div
@@ -42,7 +46,7 @@ const GalleryStrip = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              transition={{ delay: i * 0.06 }}
               className={`group relative overflow-hidden rounded-2xl ${img.span}`}
             >
               <img
