@@ -42,6 +42,16 @@
     --zebra-gold: 38 92% 50%;
     --gunmetal: 0 0% 10%;
 
+    /* Section backgrounds for visual separation */
+    --section-dark: 0 0% 2%;
+    --section-charcoal: 0 0% 5%;
+    --section-elevated: 0 0% 7%;
+
+    /* Form input tokens */
+    --input-bg: 0 0% 7%;
+    --input-border: 0 0% 20%;
+    --input-focus-border: 0 85% 55%;
+
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 6%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.06) 0%, hsla(0, 0%, 100%, 0.02) 100%);
     --gradient-red: linear-gradient(135deg, hsl(0, 85%, 55%) 0%, hsl(15, 100%, 55%) 100%);
@@ -79,6 +89,58 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+/* Section background utilities */
+.section-dark {
+  background-color: hsl(var(--section-dark));
+}
+
+.section-charcoal {
+  background-color: hsl(var(--section-charcoal));
+}
+
+.section-elevated {
+  background-color: hsl(var(--section-elevated));
+}
+
+/* Grain texture overlay */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  z-index: 1;
+}
+
+/* Premium form inputs */
+.form-input {
+  @apply w-full px-5 py-4 rounded-xl text-sm text-foreground transition-all duration-300;
+  background-color: hsl(var(--input-bg));
+  border: 1px solid hsl(var(--input-border));
+}
+.form-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+.form-input:focus {
+  outline: none;
+  border-color: hsl(var(--input-focus-border));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+.form-input-select {
+  @apply w-full px-5 py-4 rounded-xl text-sm text-foreground transition-all duration-300;
+  background-color: hsl(var(--input-bg));
+  border: 1px solid hsl(var(--input-border));
+}
+.form-input-select:focus {
+  outline: none;
+  border-color: hsl(var(--input-focus-border));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
 }
 
 /* Glass morphism utility */
@@ -173,4 +235,10 @@ html {
 .link-underline:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+/* Divider line */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
 }

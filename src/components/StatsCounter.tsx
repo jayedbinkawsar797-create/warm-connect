@@ -36,10 +36,11 @@ const CountUp = ({ end, suffix }: { end: number; suffix: string }) => {
 
 const StatsCounter = () => {
   return (
-    <section className="relative py-20">
-      <div className="absolute inset-0 bg-card/40" />
+    <section className="relative py-24 section-elevated">
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div className="absolute bottom-0 left-0 right-0 section-divider" />
       <div className="container relative z-10 mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -49,16 +50,16 @@ const StatsCounter = () => {
               transition={{ delay: i * 0.1 }}
               className="text-center p-6"
             >
-              <stat.icon className="w-6 h-6 text-primary mx-auto mb-4 opacity-70" />
+              <stat.icon className="w-6 h-6 text-zebra-gold mx-auto mb-4" />
               <div className="flex items-baseline justify-center gap-1">
-                <span className="text-4xl md:text-5xl font-display font-black text-foreground">
+                <span className="text-5xl md:text-6xl font-display font-black text-foreground">
                   <CountUp end={stat.value} suffix={stat.suffix} />
                 </span>
                 {stat.unit && (
-                  <span className="text-sm font-bold text-primary uppercase">{stat.unit}</span>
+                  <span className="text-sm font-bold text-zebra-gold uppercase">{stat.unit}</span>
                 )}
               </div>
-              <p className="text-xs text-muted-foreground mt-2 font-semibold uppercase tracking-wider">{stat.label}</p>
+              <p className="text-xs text-muted-foreground mt-3 font-semibold uppercase tracking-wider">{stat.label}</p>
             </motion.div>
           ))}
         </div>

@@ -54,6 +54,9 @@ export default {
         "zebra-red": "hsl(var(--zebra-red))",
         "zebra-gold": "hsl(var(--zebra-gold))",
         gunmetal: "hsl(var(--gunmetal))",
+        "section-dark": "hsl(var(--section-dark))",
+        "section-charcoal": "hsl(var(--section-charcoal))",
+        "section-elevated": "hsl(var(--section-elevated))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

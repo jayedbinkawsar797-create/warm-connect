@@ -44,6 +44,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
       <div className="absolute inset-0 bg-background/30" />
 
+      {/* Grain */}
+      <div className="absolute inset-0 grain-overlay pointer-events-none" />
+
       {/* Animated red vignette */}
       <motion.div
         animate={{ opacity: [0.03, 0.08, 0.03] }}
@@ -51,10 +54,13 @@ const HeroSection = () => {
         className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_70%,hsl(var(--primary)/0.15),transparent)]"
       />
 
-      {/* Scan line effect */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.015]" style={{
-        backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
-      }} />
+      {/* Vertical "SCROLL" label — Costa-style */}
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col items-center gap-3">
+        <span className="text-[10px] font-bold tracking-[0.35em] uppercase text-muted-foreground/50" style={{ writingMode: "vertical-rl" }}>
+          Scroll
+        </span>
+        <div className="w-[1px] h-16 bg-gradient-to-b from-muted-foreground/30 to-transparent" />
+      </div>
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         {/* Badge */}
@@ -153,7 +159,7 @@ const HeroSection = () => {
         transition={{ delay: 2.5 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <a href="#models" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+        <a href="#difference" className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
           <span className="text-[10px] uppercase tracking-[0.3em] font-semibold">Explore</span>
           <ChevronDown className="w-4 h-4 animate-bounce" />
         </a>
