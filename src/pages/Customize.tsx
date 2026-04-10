@@ -12,12 +12,14 @@ import cartBlack from "@/assets/cart-black.png";
 import cartBurgundy from "@/assets/cart-burgundy.png";
 import cartBlue from "@/assets/cart-blue.png";
 import cartWhite from "@/assets/cart-white.webp";
+import cartGrey from "@/assets/cart-grey.webp";
 
 const colors = [
   { id: "black", label: "Onyx Black", hex: "#1a1a1a", image: cartBlack },
   { id: "burgundy", label: "Royal Burgundy", hex: "#6b1a2a", image: cartBurgundy },
   { id: "blue", label: "Sapphire Blue", hex: "#1a3a8a", image: cartBlue },
   { id: "white", label: "Pearl White", hex: "#e8e8e8", image: cartWhite },
+  { id: "grey", label: "Gunmetal Grey", hex: "#6a6a6a", image: cartGrey },
 ];
 
 const seatOptions = [

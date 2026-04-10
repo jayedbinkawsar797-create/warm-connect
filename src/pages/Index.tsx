@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import YouCanFeelIt from "@/components/YouCanFeelIt";
+
 import ZebraDifference from "@/components/ZebraDifference";
 import StatsCounter from "@/components/StatsCounter";
 import ColorShowcase from "@/components/ColorShowcase";
@@ -26,7 +26,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <YouCanFeelIt />
+      
       <ZebraDifference />
       <StatsCounter />
       <ColorShowcase />
