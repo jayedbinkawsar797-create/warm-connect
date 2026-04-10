@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroWide from "@/assets/hero-wide.png";
 
 const CTABanner = () => {
   return (
-    <section className="relative py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
-      
+    <section className="relative py-32 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={heroWide} alt="" className="w-full h-full object-cover opacity-30" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/10" />
+
       <div className="container relative z-10 mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -19,7 +24,7 @@ const CTABanner = () => {
             with a <span className="text-gradient-red">Test Drive</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-10 text-lg">
-            Experience the thrill of a Zebra Golf Cart firsthand. Feel the comfort, 
+            Experience the thrill of a Zebra Golf Cart firsthand. Feel the comfort,
             luxury, and performance. Book your test drive today.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

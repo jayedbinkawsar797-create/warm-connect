@@ -116,44 +116,44 @@ const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-10">
           {/* Form */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="lg:col-span-3">
-            <div className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-8">
+            <div className="rounded-3xl border border-border/30 bg-section-elevated p-8 md:p-10">
               <h2 className="font-display font-black text-2xl text-foreground mb-6">Send a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Full Name</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Full Name</label>
                     <input type="text" value={form.name} onChange={(e) => updateField("name", e.target.value)}
-                      className="w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm" placeholder="John Doe" />
+                      className="form-input" placeholder="John Doe" />
                     {errors.name && <p className="text-xs text-primary mt-1">{errors.name}</p>}
                   </div>
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Email</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Email</label>
                     <input type="email" value={form.email} onChange={(e) => updateField("email", e.target.value)}
-                      className="w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm" placeholder="john@example.com" />
+                      className="form-input" placeholder="john@example.com" />
                     {errors.email && <p className="text-xs text-primary mt-1">{errors.email}</p>}
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Phone</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Phone</label>
                     <input type="tel" value={form.phone} onChange={(e) => updateField("phone", e.target.value)}
-                      className="w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm" placeholder="(555) 123-4567" />
+                      className="form-input" placeholder="(555) 123-4567" />
                     {errors.phone && <p className="text-xs text-primary mt-1">{errors.phone}</p>}
                   </div>
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Subject</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Subject</label>
                     <select value={form.subject} onChange={(e) => updateField("subject", e.target.value)}
-                      className="w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm">
+                      className="form-input-select">
                       {subjects.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Message</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2.5 block">Message</label>
                   <textarea value={form.message} onChange={(e) => updateField("message", e.target.value)} rows={5}
-                    className="w-full px-5 py-3.5 rounded-xl border border-border/30 bg-card/30 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm resize-none" placeholder="Tell us how we can help..." />
+                    className="form-input resize-none" placeholder="Tell us how we can help..." />
                   {errors.message && <p className="text-xs text-primary mt-1">{errors.message}</p>}
                 </div>
 
@@ -169,7 +169,7 @@ const Contact = () => {
           {/* Locations sidebar */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="lg:col-span-2 space-y-6">
             {locations.map((loc) => (
-              <div key={loc.name} className="rounded-3xl border border-border/20 bg-card/30 backdrop-blur-sm p-6">
+              <div key={loc.name} className="rounded-3xl border border-border/30 bg-section-elevated p-7">
                 <h3 className="font-display font-black text-lg text-foreground mb-4">{loc.name}</h3>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3"><MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" /><span className="text-sm text-muted-foreground">{loc.address}</span></div>
@@ -180,8 +180,7 @@ const Contact = () => {
               </div>
             ))}
 
-            {/* Quick contact card */}
-            <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 text-center">
+            <div className="rounded-3xl border border-primary/20 bg-primary/5 p-7 text-center">
               <p className="font-display font-black text-lg text-foreground mb-2">Need Immediate Help?</p>
               <p className="text-sm text-muted-foreground mb-4">Call us directly for fastest response</p>
               <a href="tel:+19548204220" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform">

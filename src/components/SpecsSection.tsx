@@ -12,8 +12,9 @@ const specs = [
 
 const SpecsSection = () => {
   return (
-    <section id="specs" className="relative py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_30%_at_50%_50%,hsl(0_85%_55%/0.03),transparent)]" />
+    <section id="specs" className="relative py-32 section-charcoal grain-overlay">
+      <div className="absolute top-0 left-0 right-0 section-divider" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_30%_at_50%_50%,hsl(var(--primary)/0.03),transparent)]" />
 
       <div className="container relative z-10 mx-auto px-6">
         <motion.div
@@ -28,7 +29,7 @@ const SpecsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {specs.map((spec, i) => (
             <motion.div
               key={spec.label}
@@ -36,10 +37,10 @@ const SpecsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group rounded-2xl border border-border/20 bg-card/20 p-6 hover:-translate-y-1 hover:border-primary/20 hover:bg-card/40 transition-all duration-500"
+              className="group rounded-2xl border border-border/20 bg-section-elevated p-7 hover:-translate-y-1 hover:border-primary/20 transition-all duration-500"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
                   <spec.icon className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-[11px] text-muted-foreground uppercase tracking-widest font-semibold">{spec.label}</span>
@@ -64,7 +65,7 @@ const SpecsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 rounded-3xl border border-border/20 bg-card/20 p-8 md:p-12"
+          className="mt-16 rounded-3xl border border-border/20 bg-section-dark p-8 md:p-12"
         >
           <h3 className="font-display font-black text-2xl mb-8 text-center text-foreground tracking-tight">
             Zebra vs. Traditional Golf Carts

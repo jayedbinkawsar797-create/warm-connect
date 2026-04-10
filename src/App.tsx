@@ -4,6 +4,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
+import Models from "./pages/Models.tsx";
+import Experience from "./pages/Experience.tsx";
+import Warranty from "./pages/Warranty.tsx";
 import Quote from "./pages/Quote.tsx";
 import Contact from "./pages/Contact.tsx";
 import DealerApplication from "./pages/DealerApplication.tsx";
@@ -21,6 +24,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/models" element={<Models />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/warranty" element={<Warranty />} />
           <Route path="/customize" element={<CustomizePage />} />
           <Route path="/quote" element={<Quote />} />
           <Route path="/contact" element={<Contact />} />
