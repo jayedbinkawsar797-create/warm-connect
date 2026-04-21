@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Check, Send, CreditCard, Landmark } from "lucide-react";
+import { ArrowLeft, Check, Send } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { z } from "zod";
@@ -11,8 +11,7 @@ const contactSchema = z.object({
   lastName: z.string().trim().min(1, "Last name is required").max(50),
   email: z.string().trim().email("Invalid email address").max(255),
   phone: z.string().trim().min(7, "Phone number is required").max(20),
-  location: z.enum(["florida", "arizona", "other"]),
-  paymentPreference: z.enum(["financing", "direct"]),
+  location: z.enum(["florida", "other"]),
   message: z.string().trim().max(500).optional(),
 });
 
@@ -39,7 +38,6 @@ const Quote = () => {
     email: "",
     phone: "",
     location: "florida",
-    paymentPreference: "financing",
     message: "",
   });
 
@@ -243,10 +241,9 @@ const Quote = () => {
 
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2 block">Preferred Location</label>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 gap-3">
                     {[
                       { id: "florida", label: "Florida" },
-                      { id: "arizona", label: "Arizona" },
                       { id: "other", label: "Other" },
                     ].map((loc) => (
                       <button
@@ -262,51 +259,6 @@ const Quote = () => {
                         {loc.label}
                       </button>
                     ))}
-                  </div>
-                </div>
-
-                {/* Payment Preference */}
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 block">How Would You Like to Pay?</label>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <button
-                      type="button"
-                      onClick={() => updateField("paymentPreference", "financing")}
-                      className={`flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 border ${
-                        form.paymentPreference === "financing"
-                          ? "bg-primary/15 border-primary/50"
-                          : "bg-background border-border/50 hover:border-border/80"
-                      }`}
-                    >
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                        form.paymentPreference === "financing" ? "bg-primary/20" : "bg-card/50"
-                      }`}>
-                        <Landmark className={`w-5 h-5 ${form.paymentPreference === "financing" ? "text-primary" : "text-muted-foreground"}`} />
-                      </div>
-                      <div className="text-left">
-                        <span className="text-sm font-bold text-foreground block">Financing</span>
-                        <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Monthly payments from 0% APR</span>
-                      </div>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => updateField("paymentPreference", "direct")}
-                      className={`flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 border ${
-                        form.paymentPreference === "direct"
-                          ? "bg-primary/15 border-primary/50"
-                          : "bg-background border-border/50 hover:border-border/80"
-                      }`}
-                    >
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                        form.paymentPreference === "direct" ? "bg-primary/20" : "bg-card/50"
-                      }`}>
-                        <CreditCard className={`w-5 h-5 ${form.paymentPreference === "direct" ? "text-primary" : "text-muted-foreground"}`} />
-                      </div>
-                      <div className="text-left">
-                        <span className="text-sm font-bold text-foreground block">Pay Directly</span>
-                        <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Full payment upfront</span>
-                      </div>
-                    </button>
                   </div>
                 </div>
 

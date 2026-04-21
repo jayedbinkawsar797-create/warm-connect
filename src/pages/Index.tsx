@@ -11,7 +11,7 @@ import FeaturesGrid from "@/components/FeaturesGrid";
 import LifestyleSection from "@/components/LifestyleSection";
 import GalleryStrip from "@/components/GalleryStrip";
 import SpecsSection from "@/components/SpecsSection";
-import FinancingSection from "@/components/FinancingSection";
+import StarRoofSection from "@/components/StarRoofSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import CTABanner from "@/components/CTABanner";
 import TestDriveForm from "@/components/TestDriveForm";
@@ -19,7 +19,7 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import StickyReservationBar from "@/components/StickyReservationBar";
 import cartWhite from "@/assets/cart-white.webp";
-import cartFrontBlue from "@/assets/cart-front-blue.jpg";
+import cartFrontBlue from "@/assets/cart-front-blue-bg.jpg";
 
 const Index = () => {
   return (
@@ -46,7 +46,7 @@ const Index = () => {
         overlay="red"
       />
       <SpecsSection />
-      <FinancingSection />
+      <StarRoofSection />
       <TestimonialSection />
       <CTABanner />
       <TestDriveForm />

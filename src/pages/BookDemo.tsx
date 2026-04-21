@@ -13,7 +13,7 @@ const bookingSchema = z.object({
   lastName: z.string().trim().min(1, "Last name is required").max(50),
   email: z.string().trim().email("Invalid email").max(255),
   phone: z.string().trim().min(7, "Phone is required").max(20),
-  location: z.enum(["florida", "arizona"]),
+  location: z.enum(["florida"]),
   date: z.date({ required_error: "Please select a date" }),
   timeSlot: z.string().min(1, "Please select a time"),
   model: z.enum(["any", "breeze-4l", "terrain-6", "terrain-6-pro"]),
@@ -83,7 +83,7 @@ const BookDemo = () => {
             <p className="text-muted-foreground mb-2">
               Your test drive is scheduled for <span className="text-foreground font-bold">{form.date ? format(form.date, "MMMM d, yyyy") : ""}</span> at <span className="text-foreground font-bold">{form.timeSlot}</span>.
             </p>
-            <p className="text-muted-foreground mb-8">We'll send a confirmation email with directions to our {form.location === "florida" ? "Florida" : "Arizona"} showroom.</p>
+            <p className="text-muted-foreground mb-8">We'll send a confirmation email with directions to our Florida showroom.</p>
             <a href="/" className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest hover:scale-105 transition-transform inline-block">
               Back to Home
             </a>
@@ -120,17 +120,10 @@ const BookDemo = () => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="lg:col-span-2 space-y-6">
               <div className="rounded-3xl border border-border/30 bg-section-elevated p-7">
                 <h3 className="font-display font-bold text-sm uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-primary" /> Select Location
+                  <MapPin className="w-4 h-4 text-primary" /> Showroom Location
                 </h3>
-                <div className="grid grid-cols-2 gap-3">
-                  {["florida", "arizona"].map((loc) => (
-                    <button key={loc} type="button" onClick={() => updateField("location", loc)}
-                      className={`py-3 rounded-xl text-sm font-bold transition-all duration-300 border ${
-                        form.location === loc ? "bg-primary/10 border-primary/40 text-foreground" : "bg-section-dark border-border/20 text-muted-foreground hover:border-border/50"
-                      }`}>
-                      {loc === "florida" ? "Florida" : "Arizona"}
-                    </button>
-                  ))}
+                <div className="py-3 rounded-xl text-sm font-bold border bg-primary/10 border-primary/40 text-foreground text-center">
+                  Florida Showroom
                 </div>
               </div>
 
@@ -178,7 +171,7 @@ const BookDemo = () => {
                       📅 {format(form.date, "EEEE, MMMM d, yyyy")} at {form.timeSlot}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      {form.location === "florida" ? "Florida" : "Arizona"} Showroom
+                      Florida Showroom
                     </p>
                   </motion.div>
                 )}

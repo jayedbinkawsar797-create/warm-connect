@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Battery, Gauge, Zap, Timer, Ruler, Shield } from "lucide-react";
 
 const specs = [
-  { icon: Battery, label: "Battery", value: "52.1V 230Ah", sub: "Advanced Lithium", progress: 95 },
-  { icon: Gauge, label: "Top Speed", value: "30 MPH", sub: "Street Legal LSV", progress: 75 },
+  { icon: Battery, label: "Battery", value: "74V 205Ah", sub: "Advanced Lithium", progress: 95 },
+  { icon: Gauge, label: "Top Speed", value: "25 MPH", sub: "Street Legal LSV", progress: 75 },
   { icon: Zap, label: "Range", value: "80–100 mi", sub: "Single Charge", progress: 90 },
   { icon: Timer, label: "Charge Time", value: "4 Hours", sub: "Fast Charge", progress: 85 },
-  { icon: Ruler, label: "Motor", value: "5 KW AC", sub: "High-Performance", progress: 80 },
-  { icon: Shield, label: "Warranty", value: "5 Years", sub: "Battery Coverage", progress: 100 },
+  { icon: Ruler, label: "Motor", value: "7.5 KW AC", sub: "High-Performance", progress: 90 },
+  { icon: Shield, label: "Warranty", value: "10 Years", sub: "Frame Coverage", progress: 100 },
 ];
 
 const SpecsSection = () => {

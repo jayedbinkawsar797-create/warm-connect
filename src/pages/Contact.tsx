@@ -31,13 +31,6 @@ const locations = [
     email: "info@zebragolfcart.com",
     hours: "Mon–Sat: 9AM – 6PM",
   },
-  {
-    name: "Arizona Showroom",
-    address: "Phoenix Metro Area",
-    phone: "(954) 820-4220",
-    email: "info@zebragolfcart.com",
-    hours: "Mon–Sat: 9AM – 6PM",
-  },
 ];
 
 const Contact = () => {

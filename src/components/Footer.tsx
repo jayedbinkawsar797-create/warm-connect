@@ -61,9 +61,9 @@ const Footer = () => (
 
         {/* Locations */}
         <div>
-          <h4 className="font-display font-bold text-foreground mb-5 text-xs uppercase tracking-widest">Locations</h4>
+          <h4 className="font-display font-bold text-foreground mb-5 text-xs uppercase tracking-widest">Location</h4>
           <div className="space-y-4">
-            {["Florida Showroom", "Arizona Showroom", "Atlanta Showroom"].map((loc) => (
+            {["Florida Showroom"].map((loc) => (
               <div key={loc} className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary" /> {loc}
               </div>

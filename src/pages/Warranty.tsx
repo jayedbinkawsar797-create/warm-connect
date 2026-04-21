@@ -12,13 +12,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const coverageItems = [
-  { icon: Battery, title: "5-Year Battery Warranty", desc: "Complete coverage on all lithium battery packs including cells, BMS, and wiring harness." },
-  { icon: Shield, title: "1-Year Frame & Components", desc: "Covers the aluminum chassis, suspension, motor, controller, and all major mechanical components." },
+  { icon: Shield, title: "10-Year Frame Warranty", desc: "Industry-leading 10-year coverage on the aluminum chassis — built to last a lifetime of adventures." },
+  { icon: Battery, title: "1-Year Major Components", desc: "Full 1-year coverage on the lithium battery, AC motor, controller, and all major mechanical components." },
   { icon: Wrench, title: "Solar Panel Coverage", desc: "Integrated solar panels covered for defects in materials and workmanship for the full warranty period." },
 ];
 
 const covered = [
-  "Lithium battery pack (5 years)", "AC motor and controller", "Aluminum frame and chassis",
+  "Aluminum frame and chassis (10 years)", "Lithium battery pack (1 year)", "AC motor and controller",
   "Solar panel system", "OEM electrical components", '13" touchscreen display',
   "Factory-installed accessories", "Powertrain components",
 ];
