@@ -25,10 +25,9 @@ const seatOptions = [
 ];
 
 const configOptions = [
-  { id: "4seat", label: "Breeze 4L", sub: "4-Seater", price: "$14,999", battery: "51.2V 150Ah", motor: "5KW" },
-  { id: "4seat-pro", label: "Breeze 4L Pro", sub: "4-Seater Pro", price: "$15,999", battery: "51.2V 230Ah", motor: "5KW" },
+  { id: "4seat", label: "Breeze 4L", sub: "4-Seater", price: "$15,999", battery: "51.2V 230Ah", motor: "5KW" },
   { id: "6seat", label: "Terrain 6", sub: "6-Seater", price: "$17,999", battery: "51.2V 230Ah", motor: "5KW" },
-  { id: "6seat-pro", label: "Terrain 6 Pro", sub: "6-Seater Pro", price: "$19,999", battery: "73.6V 205Ah", motor: "7.5KW" },
+  { id: "6seat-pro", label: "Terrain 6 Pro", sub: "6-Seater Pro", price: "$19,999", battery: "74V 205Ah", motor: "7.5KW" },
 ];
 
 const tireOptions = [
@@ -52,7 +51,7 @@ const Configurator = () => {
   const navigate = useNavigate();
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSeat, setSelectedSeat] = useState(seatOptions[0]);
-  const [selectedConfig, setSelectedConfig] = useState(configOptions[2]);
+  const [selectedConfig, setSelectedConfig] = useState(configOptions[1]);
   const [selectedTire, setSelectedTire] = useState(tireOptions[1]);
   const [selectedRim, setSelectedRim] = useState(rimOptions[0]);
   const [selectedAccessories, setSelectedAccessories] = useState<string[]>([]);
@@ -68,7 +67,7 @@ const Configurator = () => {
   const handleReset = () => {
     setSelectedColor(colors[0]);
     setSelectedSeat(seatOptions[0]);
-    setSelectedConfig(configOptions[2]);
+    setSelectedConfig(configOptions[1]);
     setSelectedTire(tireOptions[1]);
     setSelectedRim(rimOptions[0]);
     setSelectedAccessories([]);
