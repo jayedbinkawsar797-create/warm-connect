@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sun, Shield, Zap, Monitor, Battery, Cpu } from "lucide-react";
+import { Sun, Shield, Zap, Monitor, Battery, Sparkles, Navigation } from "lucide-react";
 import dashImage from "@/assets/cart-dashboard.webp";
 
 const features = [
@@ -7,8 +7,8 @@ const features = [
   { icon: Shield, title: "Street Legal with VIN", description: "Every Zebra cart is fully street-legal (LSV) with a registered VIN number." },
   { icon: Zap, title: "80+ Mile Range", description: "Advanced lithium delivers 80–100 miles on a single 4-hour charge." },
   { icon: Monitor, title: '13" Smart Display', description: "Wireless Apple CarPlay, Bluetooth audio, and 4K backup camera." },
-  { icon: Battery, title: "5-Year Warranty", description: "52.1V 230Ah advanced lithium battery backed by 5-year warranty." },
-  { icon: Cpu, title: "Carbon Fiber Interior", description: "Diamond-stitched seats, carbon fiber dash, 3 USB ports." },
+  { icon: Sparkles, title: "Star Roof Lights", description: "Magical fiber-optic starlight headliner illuminates the cabin with warm ambient stars." },
+  { icon: Navigation, title: "Power Steering", description: "Effortless handling with our integrated electric power steering — smooth turns at any speed." },
 ];
 
 const FeaturesGrid = () => {

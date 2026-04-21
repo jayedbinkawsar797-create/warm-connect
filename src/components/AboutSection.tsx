@@ -38,8 +38,8 @@ const AboutSection = () => (
           className="space-y-5"
         >
           {[
-            { icon: MapPin, title: "Showroom Locations", desc: "Visit us in Florida, Arizona, and Atlanta. More locations coming soon." },
-            { icon: Award, title: "Industry-Leading Warranty", desc: "5-year lithium battery warranty and 1-year coverage on frame and major components." },
+            { icon: MapPin, title: "Showroom Location", desc: "Visit our flagship showroom in Florida. Schedule a private test drive today." },
+            { icon: Award, title: "Industry-Leading Warranty", desc: "10-year frame warranty and 1-year coverage on all major components." },
             { icon: Leaf, title: "Eco-Conscious Innovation", desc: "Solar-integrated roofs and zero-emission electric powertrains for a greener future." },
           ].map((item) => (
             <div key={item.title} className="rounded-2xl border border-border/20 bg-section-elevated p-7 flex gap-5 hover:-translate-y-1 hover:border-zebra-gold/20 transition-all duration-500">
