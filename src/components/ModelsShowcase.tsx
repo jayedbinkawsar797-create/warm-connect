@@ -9,8 +9,8 @@ const models = [
     image: cartAngle1,
     name: "Breeze 4L",
     seats: "4-Seater",
-    price: "From $14,999",
-    specs: ["51.2V 150Ah Lithium", "5KW AC Motor", "80+ Mile Range"],
+    price: "From $15,999",
+    specs: ["51.2V 230Ah Lithium", "5KW AC Motor", "80+ Mile Range"],
   },
   {
     image: cartAngle2,
@@ -25,7 +25,7 @@ const models = [
     name: "Terrain 6 Pro",
     seats: "6-Seater Pro",
     price: "From $19,999",
-    specs: ["73.6V 205Ah Lithium", "7.5KW AC Motor", "100+ Mile Range"],
+    specs: ["74V 205Ah Lithium", "7.5KW AC Motor", "100+ Mile Range"],
   },
 ];
 
