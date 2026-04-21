@@ -19,7 +19,7 @@ import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 import StickyReservationBar from "@/components/StickyReservationBar";
 import cartWhite from "@/assets/cart-white.webp";
-import cartFrontBlue from "@/assets/cart-front-blue.jpg";
+import cartFrontBlue from "@/assets/cart-front-blue-bg.jpg";
 
 const Index = () => {
   return (
