@@ -13,7 +13,7 @@ const bookingSchema = z.object({
   lastName: z.string().trim().min(1, "Last name is required").max(50),
   email: z.string().trim().email("Invalid email").max(255),
   phone: z.string().trim().min(7, "Phone is required").max(20),
-  location: z.enum(["florida", "arizona"]),
+  location: z.enum(["florida"]),
   date: z.date({ required_error: "Please select a date" }),
   timeSlot: z.string().min(1, "Please select a time"),
   model: z.enum(["any", "breeze-4l", "terrain-6", "terrain-6-pro"]),
