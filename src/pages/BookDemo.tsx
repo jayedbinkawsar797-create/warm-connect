@@ -36,6 +36,8 @@ const models = [
 
 const BookDemo = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState<Omit<BookingForm, "date"> & { date?: Date }>({
     firstName: "",
@@ -54,7 +56,7 @@ const BookDemo = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = bookingSchema.safeParse(form);
     if (!result.success) {
@@ -65,7 +67,24 @@ const BookDemo = () => {
       setErrors(fieldErrors);
       return;
     }
-    setSubmitted(true);
+    setLoading(true);
+    setApiError("");
+    try {
+      const response = await fetch("/api/book-demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          date: form.date?.toISOString(),
+        }),
+      });
+      if (!response.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setApiError("Something went wrong. Please try again or call us at (954) 820-4220.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -223,9 +242,17 @@ const BookDemo = () => {
                       className="form-input resize-none" placeholder="Any special requests..." />
                   </div>
 
-                  <button type="submit" className="group w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300">
+                  {apiError && (
+                    <p className="text-xs text-primary text-center bg-primary/10 py-3 px-4 rounded-xl">{apiError}</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="group w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  >
                     <span className="flex items-center justify-center gap-2">
-                      <Send className="w-4 h-4" /> Confirm Booking
+                      <Send className="w-4 h-4" />
+                      {loading ? "Booking..." : "Confirm Booking"}
                     </span>
                   </button>
                   <p className="text-center text-[11px] text-muted-foreground">Free · No obligation · Cancel anytime</p>

@@ -1,6 +1,62 @@
-import { Phone, Mail, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { useState } from "react";
+import { Phone, Mail, MapPin, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { Link } from "react-router-dom";
 import zebraLogo from "@/assets/zebra-logo.png";
+
+const NewsletterForm = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <div className="mt-14 pt-10 border-t border-border/20">
+      <div className="max-w-md">
+        <h4 className="font-display font-bold text-foreground mb-1 text-sm uppercase tracking-widest">Stay in the Loop</h4>
+        <p className="text-xs text-muted-foreground mb-4">New models, events, and exclusive offers — straight to your inbox.</p>
+        {status === "success" ? (
+          <p className="text-sm text-primary font-bold">✓ You're subscribed! Thanks for joining.</p>
+        ) : (
+          <form onSubmit={handleSubscribe} className="flex gap-2">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              className="flex-1 px-4 py-2.5 rounded-full border border-border/30 bg-section-elevated text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-all"
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground font-bold text-xs uppercase tracking-wider hover:scale-105 transition-all disabled:opacity-60"
+            >
+              <Send className="w-3.5 h-3.5" />
+            </button>
+          </form>
+        )}
+        {status === "error" && (
+          <p className="text-xs text-primary mt-2">Something went wrong. Please try again.</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const Footer = () => (
   <footer className="relative border-t border-border/20 section-charcoal grain-overlay">
@@ -72,11 +128,14 @@ const Footer = () => (
         </div>
       </div>
 
+      {/* Newsletter */}
+      <NewsletterForm />
+
       {/* USA badge + copyright */}
       <div className="border-t border-border/20 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="text-lg">🇺🇸</span>
-          <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Designed & Engineered in the USA</span>
+          <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Designed &amp; Engineered in the USA</span>
         </div>
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Zebra Golf Cart. All rights reserved. Street Legal LSV vehicles with VIN.

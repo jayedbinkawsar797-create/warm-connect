@@ -59,6 +59,8 @@ const fleetOptions = [
 
 const Dealer = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState<DealerForm>({
     businessName: "",
@@ -79,7 +81,7 @@ const Dealer = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = dealerSchema.safeParse(form);
     if (!result.success) {
@@ -90,7 +92,21 @@ const Dealer = () => {
       setErrors(fieldErrors);
       return;
     }
-    setSubmitted(true);
+    setLoading(true);
+    setApiError("");
+    try {
+      const response = await fetch("/api/dealer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setApiError("Something went wrong. Please try again or email us at info@zebragolfcart.com.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -300,9 +316,17 @@ const Dealer = () => {
                     className="form-input resize-none" placeholder="Tell us about your business and why you'd like to partner with Zebra..." />
                 </div>
 
-                <button type="submit" className="group w-full py-4 rounded-full bg-zebra-gold text-background font-bold text-sm uppercase tracking-widest glow-gold hover:scale-[1.02] transition-all duration-300">
+                {apiError && (
+                  <p className="text-xs text-primary text-center bg-primary/10 py-3 px-4 rounded-xl">{apiError}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group w-full py-4 rounded-full bg-zebra-gold text-background font-bold text-sm uppercase tracking-widest glow-gold hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
                   <span className="flex items-center justify-center gap-2">
-                    <Send className="w-4 h-4" /> Submit Dealer Application
+                    <Send className="w-4 h-4" />
+                    {loading ? "Submitting..." : "Submit Dealer Application"}
                   </span>
                 </button>
                 <p className="text-center text-[11px] text-muted-foreground">Our B2B team reviews applications within 48 business hours</p>

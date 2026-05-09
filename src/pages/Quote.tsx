@@ -30,6 +30,8 @@ const Quote = () => {
   const navigate = useNavigate();
   const [config, setConfig] = useState<ConfigData | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const [form, setForm] = useState<ContactForm>({
@@ -59,7 +61,7 @@ const Quote = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = contactSchema.safeParse(form);
     if (!result.success) {
@@ -70,8 +72,21 @@ const Quote = () => {
       setErrors(fieldErrors);
       return;
     }
-    // In production this would submit to backend
-    setSubmitted(true);
+    setLoading(true);
+    setApiError("");
+    try {
+      const response = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, config }),
+      });
+      if (!response.ok) throw new Error("Failed");
+      setSubmitted(true);
+    } catch {
+      setApiError("Something went wrong. Please try again or call us at (954) 820-4220.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!config) return null;
@@ -273,13 +288,17 @@ const Quote = () => {
                   />
                 </div>
 
+                {apiError && (
+                  <p className="text-xs text-primary text-center bg-primary/10 py-3 px-4 rounded-xl">{apiError}</p>
+                )}
                 <button
                   type="submit"
-                  className="group w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300"
+                  disabled={loading}
+                  className="group w-full py-4 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest glow-red hover:scale-[1.02] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   <span className="flex items-center justify-center gap-2">
                     <Send className="w-4 h-4" />
-                    Submit Quote Request
+                    {loading ? "Submitting..." : "Submit Quote Request"}
                     <ArrowLeft className="w-4 h-4 rotate-180 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </button>
