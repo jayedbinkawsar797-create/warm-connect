@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { supabase } from './_supabase';
+import { getSupabase } from './_supabase';
 import { resend, FROM_EMAIL, NOTIFICATION_EMAIL, cors } from './_email';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -14,7 +14,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Save to database
-  const { error: dbError } = await supabase
+  const { error: dbError } = await getSupabase()
     .from('contacts')
     .insert([{ name, email, phone, subject, message }]);
 
