@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getSupabase } from './_supabase';
-import { resend, FROM_EMAIL, NOTIFICATION_EMAIL, cors } from './_email';
+import { getSupabase } from './_supabase.js';
+import { resend, FROM_EMAIL, NOTIFICATION_EMAIL, cors } from './_email.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   cors(res);
